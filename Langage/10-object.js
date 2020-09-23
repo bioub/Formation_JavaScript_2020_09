@@ -37,6 +37,9 @@ const coords2 = {
 };
 
 console.log(coords1.x);
+console.log(coords1['x']);
+const key = 'x';
+console.log(coords1[key]);
 
 const coordsJson = JSON.stringify(coords1);
 

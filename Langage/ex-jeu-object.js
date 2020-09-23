@@ -1,7 +1,7 @@
 'use strict';
 
 const Random = {
-  get() {
+  get() { // 2 - Method properties
     return Math.random();
   },
   getArbitrary: function (min, max) {
@@ -21,8 +21,11 @@ const Random = {
 
 const readline = require('readline');
 
+// 4 - class
 function Jeu(options) {
-  options = options || {};
+  options = options || {}; // 1 - default param
+
+  // 3 - destructurer l'objet + shorthand property + default params
   const min = options.min || 0;
   const max = options.max !== undefined ? options.max : 100;
 
@@ -36,6 +39,7 @@ function Jeu(options) {
 
 Jeu.prototype.jouer = function() {
   if (this.essais.length) {
+    // 5 - template literal
     console.log('Vous avez déjà joué : ' + this.essais.join(' - '));
   }
 
