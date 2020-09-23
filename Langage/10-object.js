@@ -38,6 +38,10 @@ const coords2 = {
 
 console.log(coords1.x);
 
+const coordsJson = JSON.stringify(coords1);
+
+console.log(coordsJson); // {"x":1,"y":2}
+
 globalThis.MyMath = {
   sum: (a, b) => Number(a) + Number(b),
 };
