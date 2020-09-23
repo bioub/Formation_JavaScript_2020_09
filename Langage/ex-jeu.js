@@ -28,7 +28,7 @@ function jouer() {
   rl.question('Quel est le nombre entier ? ', (answer) => {
     console.log('Vous avez saisi : ' + answer);
 
-    const entierSaisi = parseInt(answer);
+    const entierSaisi = parseInt(answer, 10);
 
     if (isNaN(entierSaisi)) {
       console.log('Erreur : il faut saisir un nombre entier');
