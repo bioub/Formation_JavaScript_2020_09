@@ -20,8 +20,8 @@ console.log(prenoms4LettresUpper);
 // paradigme fonctionnel (programmation fonctionnelle)
 // sur les tableaux natif depuis ES5
 const prenoms4LettresUpperFonc = prenoms
-  .filter(prenom => prenom.length === 4)
-  .map(prenom4Letter => prenom4Letter.toUpperCase());
+  .filter((prenom) => prenom.length === 4)
+  .map((prenom4Letter) => prenom4Letter.toUpperCase());
 
 console.log(prenoms4LettresUpperFonc);
 

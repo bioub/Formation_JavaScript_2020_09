@@ -27,4 +27,7 @@ console.log('E')
 // file d'attente (501ms) : cbD
 // file d'attente (502ms) :
 // file d'attente (1000ms) : cbC
-// file d'attente (1001ms) : 
+// file d'attente (1001ms) :
+
+// Jake Archibald : In the Loop (JSConf Asia 2018)
+// https://www.youtube.com/watch?v=cCOL7MC4Pl0
