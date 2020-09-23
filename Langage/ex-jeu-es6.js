@@ -27,7 +27,7 @@ class Jeu {
   constructor(options = {}) {
     const { min = 0, max = 100 } = options;
 
-    this.rl = readline.createInterface({
+    this._rl = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
     });
@@ -38,7 +38,7 @@ class Jeu {
     if (this.essais.length) {
       console.log(`Vous avez déjà joué : ${this.essais.join(' - ')} !`);
     }
-    this.rl.question('Quel est le nombre entier ? ', (answer) => {
+    this._rl.question('Quel est le nombre entier ? ', (answer) => {
       console.log('Vous avez saisi : ' + answer);
 
       const entierSaisi = Number.parseInt(answer, 10);
@@ -60,7 +60,7 @@ class Jeu {
       }
       else {
         console.log('Gagné');
-        this.rl.close();
+        this._rl.close();
       }
     });
   }
