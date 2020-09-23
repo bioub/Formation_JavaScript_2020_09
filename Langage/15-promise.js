@@ -32,6 +32,7 @@ fs.promises.readFile('.prettierrc')
   .then(() => console.log('DONE'))
   .catch((err) => console.log(err))
 
+// ASYNC Promise + async await
 async function copy() {
   try {
     const buffer = await fs.promises.readFile('.prettierrc');
