@@ -6,7 +6,7 @@ function hello() {
   console.log('Hello ' + this.name); // this === object global ou undefined en mode strict
 }
 
-hello(); // Hello undefined
+hello(); // Hello Global
 
 const contact = {
   name: 'Romain',
@@ -15,3 +15,12 @@ const contact = {
 hello.call(contact); // Hello Romain
 const helloContact = hello.bind(contact);
 helloContact(); // Hello Romain
+
+function bind(originalFct, applyThis) {
+  return function() {
+    originalFct.call(applyThis);
+  }
+}
+
+const helloContact2 = bind(hello, contact);
+helloContact2(); // Hello Romain

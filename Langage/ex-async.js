@@ -20,3 +20,46 @@
 
 // fs.promises.unlink pour supprimer le fichier
 // fs.promises.rmdir pour supprimer le dossier
+const fs = require('fs');
+
+async function rmFileIfNotExists(filePath) {
+  try {
+    await fs.promises.stat(filePath);
+    await fs.promises.unlink(filePath);
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      throw err;
+    }
+  }
+}
+
+async function rmDirIfNotExists(dirPath) {
+  try {
+    await fs.promises.stat(dirPath);
+    await fs.promises.rmdir(dirPath);
+  } catch (err) {
+    if (err.code !== 'ENOENT') {
+      throw err;
+    }
+  }
+}
+
+(async () => {
+  try {
+    await rmFileIfNotExists('output/result.txt');
+    console.log('output/result.txt deleted');
+    await rmDirIfNotExists('output');
+    console.log('output deleted');
+    await fs.promises.mkdir('output');
+    console.log('output created');
+    const buffers = await Promise.all([
+      fs.promises.readFile('a.txt'),
+      fs.promises.readFile('b.txt'),
+    ]);
+    console.log('a.txt and b.txt read');
+    await fs.promises.writeFile('output/result.txt', Buffer.concat(buffers));
+    console.log('output/result.txt created');
+  } catch (err) {
+    console.log(err);
+  }
+})();

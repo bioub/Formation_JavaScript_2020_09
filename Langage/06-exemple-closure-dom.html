@@ -1,25 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-</head>
-<body>
-  <script>
-    function createButton(text) {
-      const btnEl = document.createElement('button');
-      btnEl.innerText = text;
-      btnEl.addEventListener('click', function() {
-        console.log(text);
-      });
-      document.body.appendChild(btnEl);
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script type="module">
+      function createButton(text) {
+        const btnEl = document.createElement('button');
+        btnEl.innerText = text;
+        btnEl.addEventListener('click', (event) => {
+          // ATTENTION DE NE PLUS UTILISER this pour faire référence au bouton
+          // car avec les fonctions fléchées il ne sera pas créé
+          // console.log(this.innerText);
+          console.log(event.target.innerText);
+          console.log(event.currentTarget.innerText);
+          console.log(btnEl.innerText);
+          console.log(text);
+        });
+        document.body.appendChild(btnEl);
+      }
 
-    createButton('Text 1');
-    createButton('Text 2');
-    createButton('Text 3');
-  </script>
-</body>
+      createButton('Text 1');
+      createButton('Text 2');
+      createButton('Text 3');
+    </script>
+  </body>
 </html>

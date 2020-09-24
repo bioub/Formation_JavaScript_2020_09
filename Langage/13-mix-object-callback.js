@@ -7,7 +7,7 @@ class Contact {
   }
   helloAsync() {
     setTimeout(() => {
-      // console.log(this);
+      console.log(this);
       console.log(`Hello ${this.name}`);
     }, 1000);
   }

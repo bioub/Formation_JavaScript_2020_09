@@ -36,6 +36,8 @@ const coords2 = {
   // },
 };
 
+// console.log(coords1.sumXY === coords2.sumXY); // false
+
 console.log(coords1.x);
 console.log(coords1['x']);
 const key = 'x';
@@ -59,16 +61,17 @@ console.log(MyMath.sum(1, 2));
 //   return `Hello ${this.prenom}`;
 // };
 class Contact {
-  constructor(prenom) {
+  constructor(prenom, nom) {
     this.prenom = prenom;
+    this.nom = nom;
   }
   hello() {
     return `Hello ${this.prenom}`;
   }
 }
 
-const romain = new Contact('Romain');
-const eric = new Contact('Eric');
+const romain = new Contact('Romain', 'Bohdanowicz');
+const eric = new Contact('Eric', 'Martin');
 
 console.log(typeof Contact); // function
 console.log(typeof romain); // object
@@ -77,3 +80,12 @@ console.log(romain.prenom); // Romain
 console.log(eric.prenom); // Eric
 console.log(romain.hello()); // Romain
 console.log(eric.hello()); // Eric
+
+console.log(romain.hello === eric.hello); // true
+
+console.log('prenom' in romain); // true
+console.log('hello' in romain); // true
+console.log(romain.prenom !== undefined); // true
+console.log(romain.hello !== undefined); // true
+console.log(romain.hasOwnProperty('prenom')); // true
+console.log(romain.hasOwnProperty('hello')); // false
