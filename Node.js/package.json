@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4",
+    "prettier": "^2.1.2"
+  },
+  "scripts": {
+    "start:dev": "nodemon 01-http-server.js",
+    "format:js": "prettier **/*.js --write"
+  }
+}
