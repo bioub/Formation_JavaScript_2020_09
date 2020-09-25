@@ -5,7 +5,12 @@
 		},
 		{
 			"path": "Node.js"
+		},
+		{
+			"path": "Browser"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Browser"
+	}
 }

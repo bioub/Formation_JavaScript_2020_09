@@ -12,8 +12,8 @@
 // doit être appelé plusieurs fois
 // à la place :
 // - event emitter
-// - Observable (Angular)
-// - async iteration ES2018
+// - Observable (Angular) -> RxJS
+// - async iteration ES2018 (Deno)
 // function interval(delayMs) {
 //   return new Promise((resolve) => {
 //     setInterval(() => {

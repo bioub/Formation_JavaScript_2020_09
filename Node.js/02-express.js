@@ -62,7 +62,12 @@ function authenticate(req, res, next) {
   const [, token] = req.headers.authorization.split(' ');
 
   try {
-    jwt.verify(token, SECRET);
+    /* eslint-disable-next-line no-unused-vars */
+    const payload = jwt.verify(token, SECRET);
+
+    // console.log(((Date.now() / 1000) - payload.iat) / (3600));
+
+
     next();
   } catch {
     res.status(401);
@@ -98,6 +103,7 @@ app.post('/api/todos', authenticate, express.json(), (req, res) => {
   res.json(todo);
 });
 
+/* eslint-disable-next-line no-unused-vars */
 function omit(obj, key) {
   const { [key]: _, ...rest } = obj;
   return rest;
