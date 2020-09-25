@@ -1,5 +1,5 @@
 import { addTodo } from "./todo.js";
-import { fetchTodos } from "./api.js";
+import { fetchTodos, postTodo, deleteTodoById } from "./api.js";
 
 /** @type {HTMLFormElement} */
 const formEl = document.querySelector('.todo-form');
@@ -11,24 +11,28 @@ const todoInputEl = document.querySelector('.todo-form-value');
 const todoToggleEl = document.querySelector('.todo-toggle-all');
 
 
-formEl.addEventListener('submit', (event) => {
+formEl.addEventListener('submit', async (event) => {
   event.preventDefault();
 
-  addTodo({
+  const todo = await postTodo({
     id: Math.floor(Math.random() * Number.MAX_SAFE_INTEGER), // à remplacer par celui provenant du serveur
     title: todoInputEl.value,
     completed: false,
-  }, listEl);
+  });
+
+  addTodo(todo, listEl);
 
   todoInputEl.value = '';
   todoInputEl.focus();
 });
 
-listEl.addEventListener('click', (event) => {
+listEl.addEventListener('click', async (event) => {
   /** @type {HTMLElement} */
   const target = event.target;
 
   if (target.classList.contains('todo-btn-rm')) {
+    const todoId = target.parentElement.dataset.todoId;
+    await deleteTodoById(todoId);
     target.parentElement.parentElement.removeChild(target.parentElement);
   }
 });
@@ -79,6 +83,7 @@ en JSON la todo à insérer
 en réponse, vous recevez la même todo avec un id
 puis appeler addTodo
 MDN : fetch pour le POST
+!!!!!! ajouter l'entete Content-type: application/json
 
 Exercice 5 :
 Au click du bouton moins

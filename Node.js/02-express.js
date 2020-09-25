@@ -95,7 +95,7 @@ app.get('/api/todos/:todoId', (req, res) => {
   res.json(todo);
 });
 
-app.post('/api/todos', authenticate, express.json(), (req, res) => {
+app.post('/api/todos', /*authenticate,*/ express.json(), (req, res) => {
   const todo = req.body;
 
   todo.id = Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
@@ -143,7 +143,7 @@ app.post('/api/users', express.json(), (req, res) => {
 // Sur une requête DELETE /api/todos/:todoId
 // Supprimer la todo correspondante du tableau (relire la doc MDN sur les tableaux)
 // Répondre la todo supprimée
-app.delete('/api/todos/:todoId', authenticate, (req, res) => {
+app.delete('/api/todos/:todoId', /*authenticate,*/  (req, res) => {
   const todoId = Number(req.params.todoId);
 
   const todo = todos.find((t) => t.id === todoId);
