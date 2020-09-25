@@ -1,4 +1,5 @@
 import { addTodo } from "./todo.js";
+import { fetchTodos } from "./api.js";
 
 /** @type {HTMLFormElement} */
 const formEl = document.querySelector('.todo-form');
@@ -43,7 +44,16 @@ todoToggleEl.addEventListener('click', (event) => {
   for (const checkbox of checkboxes) {
     checkbox.checked = event.target.checked;
   }
-})
+});
+
+
+(async () => {
+  const todos = await fetchTodos();
+
+  for (const todo of todos) {
+    addTodo(todo, listEl);
+  }
+})();
 /*
 Exercice 1 :
 Reprendre le code de addTodo pour ajouter les balises manquantes
@@ -61,4 +71,18 @@ Au click de <input type="checkbox" class="todo-toggle-all" />
 Cocher ou décocher toutes les todos
 document.querySelectorAll
 InputCheckboxRef.checked = true ou false
+
+Exercice 4 :
+Au submit du form
+Envoyer une requete POST http://localhost:3000/api/todos avec
+en JSON la todo à insérer
+en réponse, vous recevez la même todo avec un id
+puis appeler addTodo
+MDN : fetch pour le POST
+
+Exercice 5 :
+Au click du bouton moins
+Envoyer une requete DELETE http://localhost:3000/api/todos/123 (où 123 est l'id de la todo)
+et supprimer la todo du DOM une fois la reponse du serveur
+
 */

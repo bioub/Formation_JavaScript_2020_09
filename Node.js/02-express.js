@@ -1,9 +1,12 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const cors = require('cors');
 
 const SECRET = 'c"hg"-C5435GV5363CFvgdydf4tf6v5r(';
 
 const app = express();
+
+app.use(cors());
 
 // app.use((req, res) => {
 //   console.log('URL : ', req.url);
