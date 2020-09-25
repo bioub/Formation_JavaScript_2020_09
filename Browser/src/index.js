@@ -6,6 +6,9 @@ const formEl = document.querySelector('.todo-form');
 const listEl = document.querySelector('.todo-list');
 /** @type {HTMLInputElement} */
 const todoInputEl = document.querySelector('.todo-form-value');
+/** @type {HTMLInputElement} */
+const todoToggleEl = document.querySelector('.todo-toggle-all');
+
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
@@ -15,8 +18,32 @@ formEl.addEventListener('submit', (event) => {
     title: todoInputEl.value,
     completed: false,
   }, listEl);
+
+  todoInputEl.value = '';
+  todoInputEl.focus();
 });
 
+listEl.addEventListener('click', (event) => {
+  /** @type {HTMLElement} */
+  const target = event.target;
+
+  if (target.classList.contains('todo-btn-rm')) {
+    target.parentElement.parentElement.removeChild(target.parentElement);
+  }
+});
+
+todoToggleEl.addEventListener('click', (event) => {
+  // const checkboxes = listEl.querySelectorAll('input[type=checkbox]');
+  /** @type {NodeListOf<HTMLInputElement>} */
+  const checkboxes = listEl.querySelectorAll('.todo-completed');
+
+  // convertir un iterable en tableau ES6
+  // const checkboxesArr = Array.from(checkboxes);
+
+  for (const checkbox of checkboxes) {
+    checkbox.checked = event.target.checked;
+  }
+})
 /*
 Exercice 1 :
 Reprendre le code de addTodo pour ajouter les balises manquantes
